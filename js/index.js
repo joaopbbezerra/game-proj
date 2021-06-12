@@ -15,5 +15,5 @@ function startGame() {
 
   let newFireMan = new Fireman();
   newGame.fireMan = newFireMan;
-  newGame.fireMan.draw();
+  newGame.fireMan.draw();   
 }
