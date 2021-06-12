@@ -17,16 +17,24 @@ class Fireman{
         context.clearRect(this.x, this.y, this.width, this.height)
         switch(key){
             case "ArrowUp":
-                this.y -= 230; //Pra andar pra cima vai diminuir 25 pixels
+                if (this.y > 230){
+                    this.y -= 230; //Pra andar pra cima vai diminuir 25 pixels
+                }
             break;
             case "ArrowDown":
-                this.y += 230
+                if (this.y < 460){
+                    this.y += 230
+                }
             break;
             case "ArrowLeft":
-                this.x -= 200
+                if (this.x > 200){
+                    this.x -= 200
+                }
             break;
             case "ArrowRight":
-                this.x += 200
+                if (this.x < 400){
+                    this.x += 200
+                }
             break;
             // case "Spacebar":
             //     this.extinguishFire() Implementar caso tudo corra corretamente

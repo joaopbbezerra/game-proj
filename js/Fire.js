@@ -5,9 +5,12 @@ class Fire {
         this.width = 50
         this.height = 50
     }
-    draw(){
+    drawFire(){
         const image = new Image ()
-        image.src = "/image/fire_dropping_noBackground.png" //Imagem do foguinho
+        image.src = "./image/fire_dropping_noBackground.png" //Imagem do foguinho
         context.drawImage(image, this.x, this.y, this.width, this.height)
+        // setInterval(() => {
+        //     this.drawFire()
+        // }, 90);
     }
 }
