@@ -17,3 +17,7 @@ function startGame() {
   newGame.fireMan = newFireMan;
   newGame.fireMan.draw();   
 }
+
+document.addEventListener("keydown", (e)=>{
+    newGame.fireMan.move(e.key)
+})

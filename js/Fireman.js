@@ -11,22 +11,22 @@ class Fireman{
         context.drawImage(image, this.x, this.y, this.width, this.height)
         setInterval(() => {
             this.draw()
-        }, 30);
+        }, 90);
     }
-    moveMan(key){
+    move(key){
         context.clearRect(this.x, this.y, this.width, this.height)
         switch(key){
             case "ArrowUp":
-                this.y -= 25; //Pra andar pra cima vai diminuir 25 pixels
+                this.y -= 230; //Pra andar pra cima vai diminuir 25 pixels
             break;
             case "ArrowDown":
-                this.y += 25
+                this.y += 230
             break;
             case "ArrowLeft":
-                this.x -= 25
+                this.x -= 200
             break;
             case "ArrowRight":
-                this.x += 25
+                this.x += 200
             break;
             // case "Spacebar":
             //     this.extinguishFire() Implementar caso tudo corra corretamente
