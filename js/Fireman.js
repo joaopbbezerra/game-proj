@@ -9,9 +9,9 @@ class Fireman{
         const image = new Image ()
         image.src = "./image/firemanNoBackground.png" //Imagem do Fireman
         context.drawImage(image, this.x, this.y, this.width, this.height)
-        setInterval(() => {
-            this.draw()
-        }, 90);
+        // setInterval(() => { //Opção de tirar o draw de dentro do set interval e o fogo descer suave
+        //     this.draw()    
+        // }, 90); Se colocar o draw no start game ele já funciona, mas a velocidade tá ficando infinita.
     }
     move(key){
         context.clearRect(this.x, this.y, this.width, this.height)
