@@ -14,9 +14,7 @@ function startGame() {
   let newFireMan = new Fireman();
   newGame.fireMan = newFireMan;
   newGame.fireMan.draw(); 
-    setInterval(() => {
-        updateCanvas();
-    }, 90);
+    updateCanvas()
 }
 
 document.addEventListener("keydown", (e)=>{
