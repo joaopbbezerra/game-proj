@@ -2,13 +2,16 @@ class Fireman{
     constructor(){
         this.x = 100
         this.y = 100
-        this.width= 50
-        this.height = 50
+        this.width= 100
+        this.height = 100
     }
     draw(){
         const image = new Image ()
-        image.src = "" //Imagem do Fireman
+        image.src = "./image/firemanNoBackground.png" //Imagem do Fireman
         context.drawImage(image, this.x, this.y, this.width, this.height)
+        setInterval(() => {
+            this.draw()
+        }, 30);
     }
     moveMan(key){
         context.clearRect(this.x, this.y, this.width, this.height)

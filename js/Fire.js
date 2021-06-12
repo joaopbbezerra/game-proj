@@ -1,13 +1,13 @@
 class Fire {
-    constructor(x, y, width, height){
+    constructor(x, y){
         this.x = x
         this.y = y
-        this.width = width
-        this.height = height
+        this.width = 50
+        this.height = 50
     }
     draw(){
         const image = new Image ()
-        image.src = "" //Imagem do foguinho
+        image.src = "/image/fire_dropping_noBackground.png" //Imagem do foguinho
         context.drawImage(image, this.x, this.y, this.width, this.height)
     }
 }

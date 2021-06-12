@@ -24,6 +24,12 @@ html{
   }
 
   .img-new{
-    background-image: url(../game-proj/image/2d5yxil94ctz.png);
-      background-size: auto;
+    background-image: url(../game-proj/image/buildingMainCanvas_NoBackground.png);
+    background-size: 100% 100%;
+  }
+
+  .door-image{
+      margin-left: 350px;
+      margin-top: -10px;
+      width: 600px;
   }
