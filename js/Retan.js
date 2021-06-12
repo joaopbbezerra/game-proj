@@ -1,14 +1,13 @@
-class Fireman{
+class Retan{
     constructor(){
         this.x = 490
-        this.y = 570
-        this.width= 110
-        this.height = 130
+        this.y = 520
+        this.width= 120
+        this.height = 180
     }
     draw(){
-        const image = new Image ()
-        image.src = "./image/fireMan-novoFinal.png" //Imagem do Fireman
-        context.drawImage(image, this.x, this.y, this.width, this.height)
+        context.fillStyle = "rgba(0, 0, 200, 0)"; //"rgba(0, 0, 200, 0)" transparente
+        context.fillRect(this.x, this.y, this.width, this.height)
         // setInterval(() => { //Opção de tirar o draw de dentro do set interval e o fogo descer suave
         //     this.draw()    
         // }, 90); Se colocar o draw no start game ele já funciona, mas a velocidade tá ficando infinita.
