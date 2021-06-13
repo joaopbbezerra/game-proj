@@ -7,13 +7,16 @@ document.getElementById("start-game").onclick = () => {
   startGame();
 };
 
+let leftFireMan = "./image/fireMan-novoFinal.png"
+let rightFireMan = "./image/fireMan-noBg-right.png"
 let newGame;
+let movement = leftFireMan
 
 function startGame() {
   newGame = new Game();
   let newFireMan = new Fireman();
   newGame.fireMan = newFireMan;
-  newGame.fireMan.draw(); 
+  newGame.fireMan.draw(movement); 
     updateCanvas()
 }
 
@@ -23,13 +26,21 @@ function collision (fire){
         newGame.fireMan.y > fire.y + fire.height)
 }
 
+
 document.addEventListener("keydown", (e)=>{
+    switch (e.key){
+        case "ArrowLeft":
+            movement = leftFireMan
+        break;
+        case "ArrowRight":
+            movement = rightFireMan
+    }
     newGame.fireMan.move(e.key)
 })
 
 function updateCanvas(){
     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
-    newGame.fireMan.draw()
+    newGame.fireMan.draw(movement)
     newGame.firesFreq++
     if (newGame.firesFreq % 60 === 1){
         const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)

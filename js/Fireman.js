@@ -5,9 +5,9 @@ class Fireman{
         this.width= 110
         this.height = 130
     }
-    draw(){
+    draw(movement){
         const image = new Image ()
-        image.src = "./image/fireMan-novoFinal.png" //Imagem do Fireman
+        image.src = movement //Imagem do Fireman
         context.drawImage(image, this.x, this.y, this.width, this.height)
         // setInterval(() => { //Opção de tirar o draw de dentro do set interval e o fogo descer suave
         //     this.draw()    
