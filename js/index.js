@@ -11,12 +11,32 @@ let leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para
 let rightFireMan = "./image/fireMan-noBg-right.png" //referencia ele virando para direita
 let newGame;
 let movement = leftFireMan //Por default ele vai começar virado para esquerda
+let fireCracking
+fireCracking = new sound("./image/fire-1.mp3")
+
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
+
 
 function startGame() {
   newGame = new Game();
   let newFireMan = new Fireman();
   newGame.fireMan = newFireMan;
   newGame.fireMan.draw(movement); 
+  fireCracking.play()
     updateCanvas()
 }
 
@@ -60,6 +80,7 @@ function updateCanvas(){
         if (collision(fire)){
             newGame.gameOver = true
             newGame.firesFreq = 0
+            fireCracking.stop()
             alert(`Game Over! Final Score: ${newGame.score}`)
             newGame.score = 0
             newGame.fires = []
