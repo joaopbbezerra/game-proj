@@ -7,10 +7,10 @@ document.getElementById("start-game").onclick = () => {
   startGame();
 };
 
-let leftFireMan = "./image/fireMan-novoFinal.png"
-let rightFireMan = "./image/fireMan-noBg-right.png"
+let leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
+let rightFireMan = "./image/fireMan-noBg-right.png" //referencia ele virando para direita
 let newGame;
-let movement = leftFireMan
+let movement = leftFireMan //Por default ele vai começar virado para esquerda
 
 function startGame() {
   newGame = new Game();
@@ -29,7 +29,7 @@ function collision (fire){
 
 document.addEventListener("keydown", (e)=>{
     switch (e.key){
-        case "ArrowLeft":
+        case "ArrowLeft": //Muda o movement para left ou right, de acordo com a tecla pressionada
             movement = leftFireMan
         break;
         case "ArrowRight":

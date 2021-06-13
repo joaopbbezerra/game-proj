@@ -1,7 +1,7 @@
 class Fireman{
     constructor(){
         this.x = 490
-        this.y = 570
+        this.y = 550
         this.width= 110
         this.height = 130
     }
@@ -27,13 +27,13 @@ class Fireman{
                 }
             break;
             case "ArrowLeft":
-                if (this.x > 200){
-                    this.x -= 200
+                if (this.x > 60){
+                    this.x -= 50
                 }
             break;
             case "ArrowRight":
-                if (this.x < 400){
-                    this.x += 200
+                if (this.x < 440){
+                    this.x += 50
                 }
             break;
             // case "Spacebar":
