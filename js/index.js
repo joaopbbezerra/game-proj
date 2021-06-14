@@ -7,7 +7,8 @@ document.getElementById("start-game").onclick = () => {
   startGame();
   document.getElementById("door-image").style.display = "block"; //Carregar imagem da porta depois do Start Game
 };
-
+let maxScore
+let newBestScore = [] //Ainda ta sendo implementado
 let leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
 let rightFireMan = "./image/fireMan-noBg-right.png" //referencia ele virando para direita
 let newGame;
@@ -60,6 +61,10 @@ document.addEventListener("keydown", (e)=>{
         break;
         case "ArrowRight":
             movement = rightFireMan
+        break;
+        case "F":
+            console.log(newGame.fireMan.x)
+        break;
     }
     newGame.fireMan.move(e.key)
 })
@@ -80,6 +85,12 @@ function updateCanvas(){
         
         newGame.fires.push(newFire)
     }
+    
+    
+    newBestScore.push(newGame.score)
+    maxScore = Math.max(...newBestScore) //Best score implementado - Tem espaço para melhoria
+
+
     newGame.fires.forEach((fire, index)=>{
         fire.y += 3 //Descer de 3 em 3, mas não acumulando velocidade
         fire.drawFire()
@@ -89,9 +100,13 @@ function updateCanvas(){
             fireCracking.stop()
             hitSound.play()
             alert(`Game Over! Final Score: ${newGame.score}`)
+            
+            console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`)
+            
             newGame.score = 0
             newGame.fires = []
             document.getElementById("score").innerHTML = 0
+            document.getElementById("bestScore").innerHTML = maxScore
             // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
             //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
             //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo

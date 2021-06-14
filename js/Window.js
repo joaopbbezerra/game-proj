@@ -7,7 +7,7 @@ class Window {
     }
     drawWindow(){
         const image = new Image ()
-        image.src = "./image/fire_Nobackground.png" //Imagem do foguinho
+        image.src = "./image/window-clear.png" //Imagem do foguinho
         // setInterval(() => {
         //     this.drawFire()
         // }, 90);

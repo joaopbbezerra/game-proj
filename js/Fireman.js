@@ -36,13 +36,15 @@ class Fireman{
                     this.x += 50
                 }
             break;
+            case "KeyF":
+                console.log("Pegou")
             // case "Spacebar":
             //     this.extinguishFire() Implementar caso tudo corra corretamente
         }
     }
-    extinguishFire(x, y){ //Vai passar os argumentos pra saber onde a janela vai ser colocada
-        const image = new Image ()
-        image.src = "./image/fireMan-novoFinal.png"  //Imagem da janela sem fogo
-        context.drawImage(image, x, y, 50, 50)
-    }
+    // extinguishFire(x, y){ //Vai passar os argumentos pra saber onde a janela vai ser colocada
+    //     const image = new Image ()
+    //     image.src = "./image/window-clear.png"  //Imagem da janela sem fogo
+    //     context.drawImage(image, x, y, 50, 50)
+    // }
 }
