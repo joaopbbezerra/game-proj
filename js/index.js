@@ -86,7 +86,7 @@ function updateCanvas(){
             newGame.gameOver = true
             newGame.firesFreq = 0
             fireCracking.stop()
-            
+            hitSound.play()
             alert(`Game Over! Final Score: ${newGame.score}`)
             newGame.score = 0
             newGame.fires = []
