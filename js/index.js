@@ -12,8 +12,11 @@ let rightFireMan = "./image/fireMan-noBg-right.png" //referencia ele virando par
 let newGame;
 let movement = leftFireMan //Por default ele vai começar virado para esquerda
 let fireCracking
+let hitSound
 fireCracking = new sound("./image/fire-1.mp3")
+hitSound = new sound ("./image/explosion-sound.mp3")
 
+//Depois vou implementar o sound como class, apenas pra deixar o código mais clean
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -41,10 +44,12 @@ function startGame() {
 }
 
 function collision (fire){
+    
     return !(newGame.fireMan.x > fire.x + fire.width||
         newGame.fireMan.x + newGame.fireMan.width < fire.x||
-        newGame.fireMan.y > fire.y + fire.height)
-}
+        newGame.fireMan.y > fire.y + fire.height ||
+        newGame.fireMan.y + newGame.fireMan.height < fire.y)
+} 
 
 
 document.addEventListener("keydown", (e)=>{
@@ -81,6 +86,7 @@ function updateCanvas(){
             newGame.gameOver = true
             newGame.firesFreq = 0
             fireCracking.stop()
+            
             alert(`Game Over! Final Score: ${newGame.score}`)
             newGame.score = 0
             newGame.fires = []
