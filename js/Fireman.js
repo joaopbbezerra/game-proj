@@ -18,12 +18,12 @@ class Fireman{
         switch(key){
             case "ArrowUp":
                 if (this.y > 230){
-                    this.y -= 230; //Pra andar pra cima vai diminuir 25 pixels
+                    this.y -= 180; //Pra andar pra cima vai diminuir 25 pixels
                 }
             break;
             case "ArrowDown":
                 if (this.y < 460){
-                    this.y += 230
+                    this.y += 180
                 }
             break;
             case "ArrowLeft":
@@ -42,7 +42,7 @@ class Fireman{
     }
     extinguishFire(x, y){ //Vai passar os argumentos pra saber onde a janela vai ser colocada
         const image = new Image ()
-        image.src = "" //Imagem da janela sem fogo
+        image.src = "./image/fireMan-novoFinal.png"  //Imagem da janela sem fogo
         context.drawImage(image, x, y, 50, 50)
     }
 }

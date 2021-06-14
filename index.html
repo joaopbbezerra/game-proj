@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,16 +13,37 @@
     <!-- <script src="js/Sound.js" defer></script> -->
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div>
-        <div id="text">FireMan Game</div>
-        <button id="start-game">Start Game</button>
-        <p>INSTRUCTIONS</p>
+    <div class="game-window">
+        <div class="title-instructions">
+            <div class="title">
+                <img class="title-logo" src="./image/title-logo.png" alt="">
+                <h1>Fireman's Game</h1>
+                <img class="title-logo" src="./image/title-logo.png" alt="">
+            </div>
+            <button id="start-game">Start Game</button>
+            <div class="instructions">
+                <h3>Instructions</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim pulvinar eleifend.
+                    Nam ornare urna facilisis, ullamcorper enim ut, ornare sem. Nulla sagittis, purus et maximus
+                    fringilla.
+                </p>
+            </div>
+            <div class="keyboard-imgs">
+                <img class="arrows-img" src="./image/arrowKeys4.png" alt="Arrow keys image">
+                <img class="spacebar-img" src="./image/spacebar2.png" alt="Space bar image">
+            </div>
+            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
+        </div>
+        <div class="canvas-images">
+            <!--<img class="roof-image" src="./image/roofTop_NoBackground.png" alt=""> // Teste imagem telhado fora da canvas-->
+            <div id="building">
+                <canvas class="img-start" id="canvas" width="600" height="700"></canvas>
+            </div>
+            <img class="door-image" id="door-image" src="./image/doorBottomNew.png" alt="">
+        </div>
     </div>
-    <div id="scoresDiv">Score: <span id="score">0</span></div>
-    <div id="building">
-        <canvas id="canvas" width="600" height="700"></canvas>
-    </div>
-    <img class="door-image" src="./image/doorBottom_NoBackground.png" alt="">
 </body>
+
 </html>

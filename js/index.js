@@ -5,6 +5,7 @@ const context = buildingCanvas.getContext("2d");
 document.getElementById("start-game").onclick = () => {
     document.getElementById("canvas").classList.add("img-new");
   startGame();
+  document.getElementById("door-image").style.display = "block"; //Carregar imagem da porta depois do Start Game
 };
 
 let leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
