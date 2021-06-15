@@ -1,9 +1,9 @@
 class Fireman{
     constructor(){
         this.x = 490
-        this.y = 550
-        this.width= 110
-        this.height = 130
+        this.y = 570
+        this.width= 90
+        this.height = 110
     }
     draw(movement){
         const image = new Image ()

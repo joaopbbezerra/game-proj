@@ -66,13 +66,59 @@ document.addEventListener("keydown", (e)=>{
         break;
         case "f":
         case "F":
-            
-            console.log(newGame.fireMan.x)
+            //Construir janela primeiro andar
+            if (newGame.fireMan.y === 570){
+                if (newGame.fireMan.x >= 420){
+                    const window = new Window (440, 537)
+                    newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
+                    console.log("cond ok", newGame.fireMan.x)
+                    const window = new Window (250, 537)
+                    newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+                    const window = new Window (60, 537)
+                    newGame.windows.push(window)
+            }
+            //Construir janela segundo andar
+        } else if (newGame.fireMan.y === 390){
+            if (newGame.fireMan.x >= 420){
+                const window = new Window (440, 357)
+                newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
+                console.log("cond ok", newGame.fireMan.x)
+                const window = new Window (250, 357)
+                newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+                const window = new Window (60, 357)
+                newGame.windows.push(window)
+            }
+            //Construir janela terceiro andar
+        } else {
+            if (newGame.fireMan.x >= 420){
+                const window = new Window (440, 170)
+                newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
+                console.log("cond ok", newGame.fireMan.x)
+                const window = new Window (250, 170)
+                newGame.windows.push(window)
+            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+                const window = new Window (60, 170)
+                newGame.windows.push(window)
+            }
+        }
+                
+                console.log(newGame.fireMan.x)
+                console.log(newGame.fireMan.y)
             // newGame.fireMan.drawWindow(newGame.fireMan.x, newGame.fireMan.y)
         break;
     }
     newGame.fireMan.move(e.key)
 })
+
+
+// const setContador = new Set (newGame.windows)
+// let contador = setContador.length
+
 
 function updateCanvas(){
     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
@@ -90,18 +136,30 @@ function updateCanvas(){
         
         newGame.fires.push(newFire)
     }
-    const window = new Window()
-    newGame.windows.push(window)
-
-    newGame.windows.forEach((window) => {
-        window.drawWindow(440, 537)
-        newGame.fireMan.draw(movement)
-    })
+    
     
     newBestScore.push(newGame.score)
     maxScore = Math.max(...newBestScore) //Best score implementado - Tem espaço para melhoria
 
 
+    newGame.windows.forEach((window) => {
+        window.drawWindow()
+        newGame.fireMan.draw(movement)
+        
+    })
+    // if (contador === 9){ //Janelas validadas
+    //     newGame.gameOver = true
+    //     newGame.firesFreq = 0
+    //         fireCracking.stop()
+    //         hitSound.play()
+    //         alert(`You Won! Final Score: ${newGame.score}`)
+    //         newGame.score = 0
+    //         newGame.fires = []
+    //         document.getElementById("score").innerHTML = 0
+    //         document.getElementById("bestScore").innerHTML = maxScore
+    //         cancelAnimationFrame(newGame.animationId)
+    // }
+    
     newGame.fires.forEach((fire, index)=>{
         fire.y += 3 //Descer de 3 em 3, mas não acumulando velocidade
         fire.drawFire()
