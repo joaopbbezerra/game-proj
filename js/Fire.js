@@ -1,9 +1,9 @@
 class Fire {
-    constructor(x, y){
+    constructor(x, y, width, height){
         this.x = x
         this.y = y
-        this.width = 60
-        this.height = 60
+        this.width = width
+        this.height = height
     }
     drawFire(){
         const image = new Image ()

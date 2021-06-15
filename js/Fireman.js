@@ -1,9 +1,9 @@
 class Fireman{
     constructor(){
         this.x = 490
-        this.y = 550
-        this.width= 110
-        this.height = 130
+        this.y = 570
+        this.width= 90
+        this.height = 110
     }
     draw(movement){
         const image = new Image ()
@@ -18,12 +18,12 @@ class Fireman{
         switch(key){
             case "ArrowUp":
                 if (this.y > 230){
-                    this.y -= 230; //Pra andar pra cima vai diminuir 25 pixels
+                    this.y -= 180; //Pra andar pra cima vai diminuir 25 pixels
                 }
             break;
             case "ArrowDown":
                 if (this.y < 460){
-                    this.y += 230
+                    this.y += 180
                 }
             break;
             case "ArrowLeft":
@@ -36,13 +36,18 @@ class Fireman{
                     this.x += 50
                 }
             break;
+            case "KeyF":
+                console.log("Pegou")
             // case "Spacebar":
             //     this.extinguishFire() Implementar caso tudo corra corretamente
         }
     }
-    extinguishFire(x, y){ //Vai passar os argumentos pra saber onde a janela vai ser colocada
+    drawWindow(x ,y){
         const image = new Image ()
-        image.src = "" //Imagem da janela sem fogo
-        context.drawImage(image, x, y, 50, 50)
+        image.src = "./image/window-clear.png" //Imagem do foguinho
+        // setInterval(() => {
+        //     this.drawFire()
+        // }, 90);
+        context.drawImage(image, x, y, 60, 60)
     }
 }
