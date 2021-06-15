@@ -160,6 +160,12 @@ function updateCanvas(){
     newGame.fireMan.draw(movement)
     newGame.firesFreq++
     if (newGame.level === 1){
+        document.getElementById("animation1").classList.add("font-effect-fire-animation")
+        document.getElementById("animation1").innerHTML = "Level 1"
+        
+        setTimeout(() => {
+            document.getElementById("animation1").style.display = "none"
+        }, 2000);
         if (newGame.firesFreq % 60 === 1){
             const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
             const randomFireY = -100
@@ -182,6 +188,11 @@ function updateCanvas(){
         }
     }
     else if (newGame.level === 2){
+        document.getElementById("animation2").classList.add("font-effect-fire-animation")
+        document.getElementById("animation2").innerHTML = "Level 2"
+        setTimeout(() => {
+            document.getElementById("animation2").style.display = "none"
+        }, 2000);
         if (newGame.firesFreq % 60 === 1){
             const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
             const randomFireY = -100
@@ -201,9 +212,16 @@ function updateCanvas(){
             newGame.level++
             controlArrayWindow = []
             newGame.windows = []
+            
         }
     }
     else if (newGame.level === 3){
+        document.getElementById("animation3").classList.add("font-effect-fire-animation")
+        document.getElementById("animation3").innerHTML = "Level 3"
+        document.getElementById("animation3").style.display = "block"
+        setTimeout(() => {
+            document.getElementById("animation3").style.display = "none"
+        }, 2000);
         if (newGame.firesFreq % 60 === 1){
             const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
             const randomFireY = -100
