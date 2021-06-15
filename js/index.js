@@ -101,7 +101,7 @@ function updateCanvas(){
             hitSound.play()
             alert(`Game Over! Final Score: ${newGame.score}`)
             
-            console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`)
+            // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
             
             newGame.score = 0
             newGame.fires = []
