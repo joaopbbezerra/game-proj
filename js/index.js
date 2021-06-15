@@ -39,6 +39,7 @@ function sound(src) {
 function startGame() {
   newGame = new Game();
   let newFireMan = new Fireman();
+  
   newGame.fireMan = newFireMan;
   newGame.fireMan.draw(movement); 
   fireCracking.play()
@@ -56,14 +57,18 @@ function collision (fire){
 
 document.addEventListener("keydown", (e)=>{
     switch (e.key){
+        
         case "ArrowLeft": //Muda o movement para left ou right, de acordo com a tecla pressionada
             movement = leftFireMan
         break;
         case "ArrowRight":
             movement = rightFireMan
         break;
+        case "f":
         case "F":
+            
             console.log(newGame.fireMan.x)
+            // newGame.fireMan.drawWindow(newGame.fireMan.x, newGame.fireMan.y)
         break;
     }
     newGame.fireMan.move(e.key)
@@ -85,7 +90,13 @@ function updateCanvas(){
         
         newGame.fires.push(newFire)
     }
-    
+    const window = new Window()
+    newGame.windows.push(window)
+
+    newGame.windows.forEach((window) => {
+        window.drawWindow(440, 537)
+        newGame.fireMan.draw(movement)
+    })
     
     newBestScore.push(newGame.score)
     maxScore = Math.max(...newBestScore) //Best score implementado - Tem espaço para melhoria
