@@ -55,7 +55,7 @@ function collision (fire){
 
 let controlArrayWindow = []
 
-document.addEventListener("keydown", (e)=>{
+const keyDown = document.addEventListener("keydown", (e)=>{
     switch (e.key){
         
         case "ArrowLeft": //Muda o movement para left ou right, de acordo com a tecla pressionada
@@ -66,11 +66,13 @@ document.addEventListener("keydown", (e)=>{
         break;
         case "f":
         case "F":
+            
             //Construir janela primeiro andar
             if (newGame.fireMan.y === 570){
                 if (newGame.fireMan.x >= 420){
                     const window = new Window (440, 537)
                     newGame.windows.push(window)
+                    console.log(window)
                     if (!controlArrayWindow.includes("window1")){
                         controlArrayWindow.push("window1")
                         newGame.scoreWindow++
@@ -152,16 +154,17 @@ document.addEventListener("keydown", (e)=>{
 
 
 
+
 function updateCanvas(){
     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
     newGame.fireMan.draw(movement)
-    if (controlArrayWindow.length < 9){
-        newGame.firesFreq++
+    newGame.firesFreq++
+    if (newGame.level === 1){
         if (newGame.firesFreq % 60 === 1){
             const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
             const randomFireY = -100
-            const randomFireWidth = 50
-            const randomFireHeight = 50
+            const randomFireWidth = 20
+            const randomFireHeight = 20
             //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
             //Lembrar de alterar no Fire o construtor caso queira passar width e height
             const newFire = new Fire (
@@ -171,61 +174,76 @@ function updateCanvas(){
                 randomFireHeight
             )
             newGame.fires.push(newFire)
-        } 
-    
-    }else if (controlArrayWindow.length === 9){
+        }
+        if (controlArrayWindow.length === 9){
+            newGame.level++
+            controlArrayWindow = []
             newGame.windows = []
-            newGame.firesFreq++
-            
-    } else if(controlArrayWindow.length < 18){
-        newGame.firesFreq++
-        if (newGame.firesFreq % 50 === 1){
-            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
-            const randomFireY = -100
-            const randomFireWidth = Math.floor(Math.random()*30 + 50)
-            const randomFireHeight = randomFireWidth
-            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
-            //Lembrar de alterar no Fire o construtor caso queira passar width e height
-            const newFire = new Fire (
-                randomFiresX,
-                randomFireY,
-                randomFireWidth,
-                randomFireHeight
-            )
-            newGame.fires.push(newFire)
         }
-    } else if (controlArrayWindow.length === 18){
-        newGame.windows = []
-        startGame()
-    } else if (controlArrayWindow.length < 27){
-        newGame.firesFreq++
-        if (newGame.firesFreq % 30 === 1){
-            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
-            const randomFireY = -100
-            const randomFireWidth = Math.floor(Math.random()*30 + 60)
-            const randomFireHeight = randomFireWidth
-            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
-            //Lembrar de alterar no Fire o construtor caso queira passar width e height
-            const newFire = new Fire (
-                randomFiresX,
-                randomFireY,
-                randomFireWidth,
-                randomFireHeight
-            )
-            newGame.fires.push(newFire)
-        }
-    } else if (controlArrayWindow === 27) {
-        newGame.gameOver = true
-        newGame.firesFreq = 0
-        fireCracking.stop()
-        hitSound.play()
-        newGame.score = 0
-        newGame.fires = []
-        document.getElementById("score").innerHTML = 0
-        document.getElementById("bestScore").innerHTML = maxScore
-        controlArrayWindow = []
-        cancelAnimationFrame(newGame.animationId)
     }
+    else if (newGame.level === 2){
+        if (newGame.firesFreq % 60 === 1){
+            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
+            const randomFireY = -100
+            const randomFireWidth = 45
+            const randomFireHeight = 45
+            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
+            //Lembrar de alterar no Fire o construtor caso queira passar width e height
+            const newFire = new Fire (
+                randomFiresX,
+                randomFireY,
+                randomFireWidth,
+                randomFireHeight
+            )
+            newGame.fires.push(newFire)
+        }
+        if (controlArrayWindow.length === 9){
+            newGame.level++
+            controlArrayWindow = []
+            newGame.windows = []
+        }
+    }
+    else if (newGame.level === 3){
+        if (newGame.firesFreq % 60 === 1){
+            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
+            const randomFireY = -100
+            const randomFireWidth = 30
+            const randomFireHeight = 30
+            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
+            //Lembrar de alterar no Fire o construtor caso queira passar width e height
+            const newFire = new Fire (
+                randomFiresX,
+                randomFireY,
+                randomFireWidth,
+                randomFireHeight
+            )
+            newGame.fires.push(newFire)
+        }
+        if (controlArrayWindow.length === 9){
+            newGame.level++
+            controlArrayWindow = []
+            newGame.windows = []
+        }
+    }
+    if (newGame.level === 4){
+        newGame.gameOver = true
+            newGame.firesFreq = 0
+            fireCracking.stop()
+            hitSound.play()
+            alert(`Good Game! Final Score: ${newGame.score}`)
+            // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
+            newGame.score = 0
+            newGame.fires = []
+            document.getElementById("score").innerHTML = 0
+            document.getElementById("bestScore").innerHTML = maxScore
+            // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
+            //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
+            //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
+            // 2 - Mudar a forma como ele verifica ou simplesmente deixar ele sem colocar o "none" que é o que faz apagar o width e contar os pontos a mais
+            cancelAnimationFrame(newGame.animationId)
+            
+    }
+
 
         
     // console.log(controlArrayWindow)

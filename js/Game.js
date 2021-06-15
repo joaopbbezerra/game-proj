@@ -9,6 +9,6 @@ class Game {
         this.firesFreq = 0
         this.animationId = null
         this.gameOver = false
-
+        this.level = 1
     }
 }
