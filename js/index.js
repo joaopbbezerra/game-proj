@@ -54,6 +54,7 @@ function collision (fire){
         newGame.fireMan.y + newGame.fireMan.height < fire.y)
 } 
 
+let controlArray = []
 
 document.addEventListener("keydown", (e)=>{
     switch (e.key){
@@ -71,39 +72,75 @@ document.addEventListener("keydown", (e)=>{
                 if (newGame.fireMan.x >= 420){
                     const window = new Window (440, 537)
                     newGame.windows.push(window)
+                    if (!controlArray.includes("window1")){
+                        controlArray.push("window1")
+                        newGame.scoreWindow++
+                    }
             } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
                     console.log("cond ok", newGame.fireMan.x)
                     const window = new Window (250, 537)
                     newGame.windows.push(window)
+                    if (!controlArray.includes("window2")){
+                        controlArray.push("window2")
+                        newGame.scoreWindow++
+                    }
             } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
                     const window = new Window (60, 537)
                     newGame.windows.push(window)
+                    if (!controlArray.includes("window3")){
+                        controlArray.push("window3")
+                        newGame.scoreWindow++
+                    }
             }
             //Construir janela segundo andar
         } else if (newGame.fireMan.y === 390){
             if (newGame.fireMan.x >= 420){
                 const window = new Window (440, 357)
                 newGame.windows.push(window)
+                if (!controlArray.includes("window4")){
+                    controlArray.push("window4")
+                    newGame.scoreWindow++
+                }
             } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
                 console.log("cond ok", newGame.fireMan.x)
                 const window = new Window (250, 357)
+                if (!controlArray.includes("window5")){
+                    controlArray.push("window5")
+                    newGame.scoreWindow++
+                }
                 newGame.windows.push(window)
             } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
                 const window = new Window (60, 357)
                 newGame.windows.push(window)
+                if (!controlArray.includes("window6")){
+                    controlArray.push("window6")
+                    newGame.scoreWindow++
+                }
             }
             //Construir janela terceiro andar
         } else {
             if (newGame.fireMan.x >= 420){
                 const window = new Window (440, 170)
                 newGame.windows.push(window)
+                if (!controlArray.includes("window7")){
+                    controlArray.push("window7")
+                    newGame.scoreWindow++
+                }
             } else if (newGame.fireMan.x >= 240 && newGame.fireMan.x < 390){
                 console.log("cond ok", newGame.fireMan.x)
                 const window = new Window (250, 170)
                 newGame.windows.push(window)
+                if (!controlArray.includes("window8")){
+                    controlArray.push("window8")
+                    newGame.scoreWindow++
+                }
             } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
                 const window = new Window (60, 170)
                 newGame.windows.push(window)
+                if (!controlArray.includes("window9")){
+                    controlArray.push("window9")
+                    newGame.scoreWindow++
+                }
             }
         }
                 
@@ -116,13 +153,12 @@ document.addEventListener("keydown", (e)=>{
 })
 
 
-// const setContador = new Set (newGame.windows)
-// let contador = setContador.length
 
 
 function updateCanvas(){
     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
     newGame.fireMan.draw(movement)
+    
     newGame.firesFreq++
     if (newGame.firesFreq % 60 === 1){
         const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
@@ -133,32 +169,32 @@ function updateCanvas(){
             randomFiresX,
             randomFireY,
         )
-        
         newGame.fires.push(newFire)
     }
-    
+    console.log(controlArray)
     
     newBestScore.push(newGame.score)
     maxScore = Math.max(...newBestScore) //Best score implementado - Tem espaço para melhoria
 
+    
 
     newGame.windows.forEach((window) => {
         window.drawWindow()
         newGame.fireMan.draw(movement)
         
     })
-    // if (contador === 9){ //Janelas validadas
-    //     newGame.gameOver = true
-    //     newGame.firesFreq = 0
-    //         fireCracking.stop()
-    //         hitSound.play()
-    //         alert(`You Won! Final Score: ${newGame.score}`)
-    //         newGame.score = 0
-    //         newGame.fires = []
-    //         document.getElementById("score").innerHTML = 0
-    //         document.getElementById("bestScore").innerHTML = maxScore
-    //         cancelAnimationFrame(newGame.animationId)
-    // }
+    if (controlArray.length === 9){ //Janelas validadas
+        newGame.gameOver = true
+        newGame.firesFreq = 0
+        fireCracking.stop()
+        hitSound.play()
+        newGame.score = 0
+        newGame.fires = []
+        document.getElementById("score").innerHTML = 0
+        document.getElementById("bestScore").innerHTML = maxScore
+        controlArray = []
+        cancelAnimationFrame(newGame.animationId)
+    }
     
     newGame.fires.forEach((fire, index)=>{
         fire.y += 3 //Descer de 3 em 3, mas não acumulando velocidade

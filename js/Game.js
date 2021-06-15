@@ -5,8 +5,10 @@ class Game {
         this.windows = []
         this.score = 0
         this.bestScore = []
+        this.scoreWindow = 0
         this.firesFreq = 0
         this.animationId = null
         this.gameOver = false
+
     }
 }
