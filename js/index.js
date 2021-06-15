@@ -218,7 +218,6 @@ function updateCanvas(){
     else if (newGame.level === 3){
         document.getElementById("animation3").classList.add("font-effect-fire-animation")
         document.getElementById("animation3").innerHTML = "Level 3"
-        document.getElementById("animation3").style.display = "block"
         setTimeout(() => {
             document.getElementById("animation3").style.display = "none"
         }, 2000);
@@ -245,21 +244,21 @@ function updateCanvas(){
     }
     if (newGame.level === 4){
         newGame.gameOver = true
-            newGame.firesFreq = 0
-            fireCracking.stop()
-            hitSound.play()
-            alert(`Good Game! Final Score: ${newGame.score}`)
-            // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
-            newGame.score = 0
-            newGame.fires = []
-            document.getElementById("score").innerHTML = 0
-            document.getElementById("bestScore").innerHTML = maxScore
-            // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
-            //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
-            //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
-            // 2 - Mudar a forma como ele verifica ou simplesmente deixar ele sem colocar o "none" que é o que faz apagar o width e contar os pontos a mais
-            cancelAnimationFrame(newGame.animationId)
-            
+        newGame.firesFreq = 0
+        fireCracking.stop()
+        hitSound.play()
+        alert(`Good Game! Final Score: ${newGame.score}`)
+        // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
+        newGame.score = 0
+        newGame.fires = []
+        document.getElementById("score").innerHTML = 0
+        document.getElementById("bestScore").innerHTML = maxScore
+        // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
+        //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
+        //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
+        // 2 - Mudar a forma como ele verifica ou simplesmente deixar ele sem colocar o "none" que é o que faz apagar o width e contar os pontos a mais
+        cancelAnimationFrame(newGame.animationId)
+        
     }
 
 
