@@ -15,6 +15,8 @@ let newGame;
 let movement = leftFireMan //Por default ele vai começar virado para esquerda
 let fireCracking
 let hitSound
+let meow
+// meow = new Sound ("")
 fireCracking = new sound("./image/fire-1.mp3")
 hitSound = new sound ("./image/explosion-sound.mp3")
 
@@ -45,7 +47,7 @@ function startGame() {
     updateCanvas()
 }
 
-function collision (fire){
+function collision (fire){ //Pode ser reutilizada para os cats
     
     return !(newGame.fireMan.x > fire.x + fire.width||
         newGame.fireMan.x + newGame.fireMan.width < fire.x||
@@ -169,18 +171,43 @@ function updateLevel (level){
         )
         newGame.fires.push(newFire)
     }
+    if (newGame.catsFreq % 240 === 1){
+        const randomCatsX = Math.floor(Math.random() *buildingCanvas.clientWidth)
+        const randomCatsY = 0
+        const newCat = new Cat (
+            randomCatsX,
+            randomCatsY
+        )
+        newGame.cats.push(newCat)
+    }
     
+}
+
+function updateCatSpeed (level, cat){
+    if (level < 2){
+        cat.y += 2
+    } else if (level < 4){
+        cat.y += 3
+    } else if (level < 6){
+        cat.y += 4
+    } else {
+        cat.y += 4 + (level/2)
+    }
 }
 
 function updateFireSpeed (level, fire){
     if (level < 2){
         fire.y += 2
+        
     } else if (level < 4){
         fire.y += 3
+        
     } else if (level < 6){
         fire.y += 4
+        
     } else {
         fire.y += 4 + (level/2)
+        
     }
 } 
 
@@ -189,7 +216,7 @@ function updateCanvas(){
     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
     newGame.fireMan.draw(movement)
     newGame.firesFreq++
-
+    newGame.catsFreq++
     if (newGame.level === 1){
         document.getElementById("animation1").classList.add("font-effect-fire-animation")
         document.getElementById("animation1").innerHTML = `Level 1`
@@ -199,6 +226,7 @@ function updateCanvas(){
     }
 
     updateLevel(newGame.level)
+
     if (controlArrayWindow.length === 9){
         newGame.level++
         document.getElementById("animation2").classList.add("font-effect-fire-animation")
@@ -210,6 +238,7 @@ function updateCanvas(){
         controlArrayWindow = []
         newGame.windows = []
         newGame.fires = []
+        newGame.cats = []
     }
     // if (newGame.level === 1){
     //     document.getElementById("animation1").classList.add("font-effect-fire-animation")
@@ -331,9 +360,24 @@ function updateCanvas(){
     //     cancelAnimationFrame(newGame.animationId)
     // }
     
+    newGame.cats.forEach((cat, index) => {
+        updateCatSpeed(newGame.level, cat)
+        cat.drawCat()
+        if (collision(cat)){
+            newGame.cats.splice(index, 1)
+            newGame.ScoreCat++
+            // meow.play()
+            // setTimeout(() => {
+            //     meow.stop()
+            // }, 1000);
+        }
+    })
+
+
     newGame.fires.forEach((fire, index)=>{
         updateFireSpeed(newGame.level, fire)
         fire.drawFire()
+        
         if (collision(fire)){
             newGame.gameOver = true
             newGame.firesFreq = 0
