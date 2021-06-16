@@ -30,8 +30,10 @@ html{
 	text-transform: uppercase;
 	width: auto;
 	background: #881400;
-    font-family: "VT323", monospace;
-	
+    font-family: "VT323", monospace;	
+}
+.start-game:hover{
+    background: #A81000;
 }
 
 #text {
@@ -67,7 +69,23 @@ html{
     flex-direction: column;
     justify-content: center;
     height: 60rem;
+    
    
+}
+
+.score-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 30rem;
+    background-color: #881400;
+    border: .5rem solid black
+}
+
+.scoresDiv{
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: white;
 }
 
 .title-instructions h1 {
@@ -143,12 +161,7 @@ html{
         }
     }
 
-.scoresDiv{
-    font-size: 1.5rem;
-    padding: 1rem;
-    font-weight: bold;
-    border: 1px solid black;
-}
+
 /*.roof-image{
     margin-bottom: -5px;
     width: 610px;
