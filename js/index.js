@@ -10,7 +10,7 @@ document.getElementById("start-game").onclick = () => {
 let maxScore
 let newBestScore = [] //Ainda ta sendo implementado
 let leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
-let rightFireMan = "./image/fireMan-noBg-right.png" //referencia ele virando para direita
+let rightFireMan = "./image/fireMan-novo-right.png" //referencia ele virando para direita
 let newGame;
 let movement = leftFireMan //Por default ele vai começar virado para esquerda
 let fireCracking
@@ -18,7 +18,7 @@ let hitSound
 let meow
 meow = new sound ("./image/meow-sound.mp3")
 fireCracking = new sound("./image/fire-1.mp3")
-hitSound = new sound ("./image/explosion-sound.mp3")
+hitSound = new sound ("./image/fireMan-scream.mp3")
 
 //Depois vou implementar o sound como class, apenas pra deixar o código mais clean
 function sound(src) {
@@ -49,10 +49,10 @@ function startGame() {
 
 function collision (fire){ //Pode ser reutilizada para os cats
     
-    return !(newGame.fireMan.x > fire.x + fire.width||
-        newGame.fireMan.x + newGame.fireMan.width < fire.x||
-        newGame.fireMan.y > fire.y + fire.height ||
-        newGame.fireMan.y + newGame.fireMan.height < fire.y)
+    return !(newGame.fireMan.x > fire.x + fire.width - 10||
+        newGame.fireMan.x + newGame.fireMan.width < fire.x + 10||
+        newGame.fireMan.y > fire.y + fire.height -10 ||
+        newGame.fireMan.y + newGame.fireMan.height < fire.y + 10)
 } 
 
 let controlArrayWindow = []
@@ -87,7 +87,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                         controlArrayWindow.push("window2")
                         newGame.scoreWindow++
                     }
-            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+            } else if (newGame.fireMan.x >= 30 && newGame.fireMan.x < 210){
                     const window = new Window (60, 537)
                     newGame.windows.push(window)
                     if (!controlArrayWindow.includes("window3")){
@@ -112,7 +112,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                     newGame.scoreWindow++
                 }
                 newGame.windows.push(window)
-            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+            } else if (newGame.fireMan.x >= 30 && newGame.fireMan.x < 210){
                 const window = new Window (60, 357)
                 newGame.windows.push(window)
                 if (!controlArrayWindow.includes("window6")){
@@ -137,7 +137,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                     controlArrayWindow.push("window8")
                     newGame.scoreWindow++
                 }
-            } else if (newGame.fireMan.x >= 60 && newGame.fireMan.x < 210){
+            } else if (newGame.fireMan.x >= 30 && newGame.fireMan.x < 210){
                 const window = new Window (60, 170)
                 newGame.windows.push(window)
                 if (!controlArrayWindow.includes("window9")){
@@ -367,9 +367,6 @@ function updateCanvas(){
             newGame.cats.splice(index, 1)
             newGame.ScoreCat++
             meow.play()
-            setTimeout(() => {
-                meow.stop()
-            }, 1000);
         }
     })
 
