@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Anton&effect=fire-animation");
+@import url(https://fonts.googleapis.com/css?family=VT323);
 
 html{
     /*font-family: 'Do Hyeon', sans-serif;*/
-    font-family: monospace;
+    font-family: "VT323", monospace;
     font-size: 10px;
 }
 
@@ -12,14 +13,25 @@ html{
 }
 
 
-#start-game {
-    font-size: 3rem;
-    background-color: #870007;
-    color: #fff;
-    padding: 2rem 4rem;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 1rem;
+.start-game {
+    background: #7c7c7c;
+	border-bottom: 6px inset rgba(0, 0, 0, 0.5);
+	border-left: 6px inset rgba(0, 0, 0, 0.5);
+	border-right: 6px inset rgba(255, 255, 255, 0.5);
+	border-top: 6px inset rgba(255, 255, 255, 0.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 5rem;
+	margin: 1rem;
+	min-width: 200px;
+	padding: 0.5rem;
+	text-transform: uppercase;
+	width: auto;
+	background: #881400;
+    font-family: "VT323", monospace;
+	
 }
 
 #text {
@@ -51,14 +63,19 @@ html{
     
 }
 .score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60rem;
    
 }
 
 .title-instructions h1 {
-    font-size: 3.5rem;
+    font-size: 6rem;
     color: #870007;
     /*margin-left: 5px;
     margin-right: 5px;*/
+    margin: 1rem 0 0 0;
     
 }
 
@@ -73,7 +90,8 @@ html{
     align-items: center;
     justify-content: space-between;
     width: 42.5rem;
-    height: 70rem;
+    height: 60rem;
+    
 }
 
 .title {
@@ -83,12 +101,13 @@ html{
 
 .instructions h3{
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
+    margin: 1rem 0 0 0;
 }
 
 .instructions p{
     text-align: justify;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .keyboard-imgs {
@@ -98,9 +117,9 @@ html{
     align-items: center;
 }
 
-.spacebar-img {
-    width: 10rem;
-    height: 3rem;
+.fkey-img {
+    width: 3.5rem;
+    height: 4rem;
 }
 
 .arrows-img {
