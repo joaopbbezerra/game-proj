@@ -175,20 +175,20 @@ const keyDown = document.addEventListener("keydown", (e)=>{
 })
 
 function updateLevel (level){
-    if (level > 10){ //limite de velocidade para nível 10 ou mais
-        level = 10
+    if (level > 15){ //limite de velocidade para nível 10 ou mais
+        level = 16
     }
-    if (level === 3 || level === 6){ //Gato pegando bombeiros como bonus e desviando do fogo
+    if (level % 3 === 0){ //Gato pegando bombeiros como bonus e desviando do fogo
         fireToDraw = "./image/fireDrop-nobg.png" //
         cuteCat = "./image/fireMan-novoFinal.png" //
         leftFireMan =  "./image/cat-meow.png" // referencia ele virando para esquerda
         rightFireMan = "./image/cat-right.png" //referencia ele virando para direita
-        
     } else {
         fireToDraw = "./image/fireDrop-nobg.png" //
         cuteCat = "./image/cat-meow.png" //
         leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
         rightFireMan = "./image/fireMan-novo-right.png" //referencia ele virando para direita
+        // newGame.fireMan.draw(leftFireMan)
     }
     const velocity = 70 - (level*5) //Quanto menor a velocity, maior a velocidade do jogo
     if(newGame.firesFreq % velocity === 1){
@@ -239,7 +239,7 @@ function updateFireSpeed (level, fire){
         fire.y += 4
         
     } else {
-        fire.y += 4 + (level/2)
+        fire.y += 4 + (level/4)
         
     }
 } 
@@ -257,7 +257,14 @@ function updateCanvas(){
             document.getElementById("animation1").style.display = "none"
         }, 2000);
     }
-
+    // if (newGame.level % 3 === 0){
+    //     context.clearRect(0, 0, buildingCanvas.clientWidth, buildingCanvas.clientHeight)
+    //     if (movement === leftFireMan){
+    //         newGame.fireMan.draw("./image/cat-meow.png")
+    //     } else if (movement === rightFireMan){
+    //         newGame.fireMan.draw("./image/cat-right.png")
+    //     }
+    // }
     updateLevel(newGame.level)
 
     if (controlArrayWindow.length === 9){
