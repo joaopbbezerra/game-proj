@@ -1,3 +1,4 @@
+
 class Fire {
     constructor(x, y, width, height){
         this.x = x

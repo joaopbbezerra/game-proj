@@ -32,7 +32,7 @@ html{
 }
 
 .img-start {
-    background-image: url(./image/BeforeGameStart-JustBuilding.png);
+    background-image: url(./image/before-game-start.png);
     background-size: 100% 100%;
 }
 .img-new {
@@ -43,7 +43,7 @@ html{
 
 .door-image {
     margin-top: -10px;
-    width: 600px;
+    width: 500px;
     display: none;
 }
 
