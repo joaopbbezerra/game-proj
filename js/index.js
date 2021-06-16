@@ -39,9 +39,9 @@ function sound(src) {
   }
 
 
-
+let playerName
 function startGame() {
-
+    playerName = window.prompt("Enter your name: ")
     newGame = new Game();
     let newFireMan = new Fireman();
     newGame.fireMan = newFireMan;
@@ -387,14 +387,13 @@ function updateCanvas(){
             newGame.firesFreq = 0
             fireCracking.stop()
             hitSound.play()
-            alert(`Game Over! Final Score: ${newGame.score}`)
-            
+            alert(`Game Over! ${playerName}'s Score: ${newGame.score}
+            You caught ${newGame.ScoreCat} cats! And look, you made it to level ${newGame.level} `)
             // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
-            
             newGame.score = 0
             newGame.fires = []
             document.getElementById("score").innerHTML = 0
-            document.getElementById("bestScore").innerHTML = maxScore
+            document.getElementById("bestScore").innerHTML = maxScore //Mudar no html
             // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
             //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
             //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo

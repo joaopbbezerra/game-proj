@@ -7,6 +7,8 @@ class Game {
         this.catsFreq = 0
         this.score = 0
         this.ScoreCat = 0
+        this.player = {}
+        this.arrayScore = []
         this.bestScore = []
         this.scoreWindow = 0
         this.firesFreq = 0
