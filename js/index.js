@@ -16,7 +16,7 @@ let movement = leftFireMan //Por default ele vai começar virado para esquerda
 let fireCracking
 let hitSound
 let meow
-// meow = new Sound ("")
+meow = new sound ("./image/meow-sound.mp3")
 fireCracking = new sound("./image/fire-1.mp3")
 hitSound = new sound ("./image/explosion-sound.mp3")
 
@@ -366,10 +366,10 @@ function updateCanvas(){
         if (collision(cat)){
             newGame.cats.splice(index, 1)
             newGame.ScoreCat++
-            // meow.play()
-            // setTimeout(() => {
-            //     meow.stop()
-            // }, 1000);
+            meow.play()
+            setTimeout(() => {
+                meow.stop()
+            }, 1000);
         }
     })
 
