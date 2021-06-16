@@ -18,6 +18,7 @@
 
 <body>
     <div class="game-window">
+
         <div class="title-instructions">
             <div class="title">
                 <img class="title-logo" src="./image/title-logo.png" alt="">
@@ -36,18 +37,28 @@
                 <img class="arrows-img" src="./image/arrowKeys4.png" alt="Arrow keys image">
                 <img class="spacebar-img" src="./image/spacebar2.png" alt="Space bar image">
             </div>
-            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
-            <div class= "scoresDiv" id="scoresDiv">Best Score: <span id="bestScore">0</span></div>
+            <div class="firetruck-container">
+                <img src="./image/fireTruck2.png" alt="">
+            </div>
+            
         </div>
+
         <div class="canvas-images">
             <!--<img class="roof-image" src="./image/roofTop_NoBackground.png" alt=""> // Teste imagem telhado fora da canvas-->
             <div id="building">
                 <canvas class="img-start" id="canvas" width="600" height="700"></canvas>
             </div>
             <img class="door-image" id="door-image" src="./image/doorBottomNew.png" alt="">
+            <div id="animation1"></div>
+            <span id ="animation2"></span>
         </div>
-        <div id="animation1"></div>
-        <span id ="animation2"></span>
+
+        <div class="score">
+            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
+            <div class= "scoresDiv" id="scoresDiv">Best Score: <span id="bestScore">0</span></div>
+        </div>
+
+        
     </div>
 </body>
 

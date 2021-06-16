@@ -11,6 +11,7 @@ html{
     /*border: 2px solid black;*/
 }
 
+
 #start-game {
     font-size: 3rem;
     background-color: #870007;
@@ -46,11 +47,19 @@ html{
     display: none;
 }
 
+.canvas-images{
+    
+}
+.score{
+   
+}
+
 .title-instructions h1 {
     font-size: 3.5rem;
     color: #870007;
     margin-left: 5px;
     margin-right: 5px;
+    
 }
 
 .title-logo {
@@ -64,7 +73,7 @@ html{
     align-items: center;
     justify-content: space-between;
     width: 42.5rem;
-    height: 60rem;
+    height: 70rem;
 }
 
 .title {
@@ -98,6 +107,23 @@ html{
     width: 10rem;
 }
 
+.firetruck-container{
+    width: 100%;
+}
+.firetruck-container img {
+    margin-left: 72%;
+    width: 20rem;
+    animation: slide-right 7s;
+}
+  @keyframes slide-right {
+        from {
+         margin-left: -100%;
+        }
+        to {
+        margin-left: 72%;
+        }
+    }
+
 .scoresDiv{
     font-size: 1.5rem;
     padding: 1rem;
@@ -119,8 +145,8 @@ html{
 .font-effect-fire-animation{
     animation: flickerAnimation 2s;
     font-size: 100px;
-    top: 50%;
-    left: 55%;
+    top: 45%;
+    left: 50%;
     position: absolute;
     font-family: "Open Sans", sans-serif;
     color: #f5f5f5;
