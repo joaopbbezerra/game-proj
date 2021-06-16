@@ -5,9 +5,9 @@ class Cat {
         this.width = 50
         this.height = 50
     }
-    drawCat(){
+    drawCat(source){
         const image = new Image ()
-        image.src = "./image/cat-meow.png" //Imagem do foguinho
+        image.src = source //Imagem do foguinho "./image/cat-meow.png"
         // setInterval(() => {
         //     this.drawFire()
         // }, 90);

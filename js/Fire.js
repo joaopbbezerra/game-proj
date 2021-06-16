@@ -6,9 +6,9 @@ class Fire {
         this.width = width
         this.height = height
     }
-    drawFire(){
+    drawFire(source){
         const image = new Image ()
-        image.src = "./image/fireDrop-nobg.png" //Imagem do foguinho
+        image.src = source //Imagem do foguinho "./image/fireDrop-nobg.png"
         // setInterval(() => {
         //     this.drawFire()
         // }, 90);

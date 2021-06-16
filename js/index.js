@@ -17,7 +17,12 @@ let movement = leftFireMan //Por default ele vai começar virado para esquerda
 let fireCracking
 let hitSound
 let meow
+let waterSound
+let fireToDraw = "./image/fireDrop-nobg.png"
+let cuteCat = "./image/cat-meow.png"
 
+
+waterSound = new sound ("./image/water-effect.mp3")
 meow = new sound ("./image/meow-sound.mp3")
 fireCracking = new sound("./image/fire-1.mp3")
 hitSound = new sound ("./image/fireMan-scream.mp3")
@@ -80,6 +85,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                     newGame.windows.push(window)
                     console.log(window)
                     if (!controlArrayWindow.includes("window1")){
+                        waterSound.play()
                         controlArrayWindow.push("window1")
                         newGame.scoreWindow++
                     }
@@ -88,6 +94,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                     const window = new Window (208, 460)
                     newGame.windows.push(window)
                     if (!controlArrayWindow.includes("window2")){
+                        waterSound.play()
                         controlArrayWindow.push("window2")
                         newGame.scoreWindow++
                     }
@@ -95,6 +102,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                     const window = new Window (48, 460)
                     newGame.windows.push(window)
                     if (!controlArrayWindow.includes("window3")){
+                        waterSound.play()
                         controlArrayWindow.push("window3")
                         newGame.scoreWindow++
                     }
@@ -106,6 +114,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 newGame.windows.push(window)
                 console.log(window)
                 if (!controlArrayWindow.includes("window4")){
+                    waterSound.play()
                     controlArrayWindow.push("window4")
                     newGame.scoreWindow++
                 }
@@ -115,6 +124,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 newGame.windows.push(window)
                 console.log(newGame.fireMan.x)
                 if (!controlArrayWindow.includes("window5")){
+                    waterSound.play()
                     controlArrayWindow.push("window5")
                     newGame.scoreWindow++
                 }
@@ -122,6 +132,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 const window = new Window (48, 303)
                 newGame.windows.push(window)
                 if (!controlArrayWindow.includes("window6")){
+                    waterSound.play()
                     controlArrayWindow.push("window6")
                     newGame.scoreWindow++
                 }
@@ -133,6 +144,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 newGame.windows.push(window)
                 console.log(window)
                 if (!controlArrayWindow.includes("window7")){
+                    waterSound.play()
                     controlArrayWindow.push("window7")
                     newGame.scoreWindow++
                 }
@@ -141,6 +153,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 const window = new Window (208, 146)
                 newGame.windows.push(window)
                 if (!controlArrayWindow.includes("window8")){
+                    waterSound.play()
                     controlArrayWindow.push("window8")
                     newGame.scoreWindow++
                 }
@@ -148,6 +161,7 @@ const keyDown = document.addEventListener("keydown", (e)=>{
                 const window = new Window (48, 146)
                 newGame.windows.push(window)
                 if (!controlArrayWindow.includes("window9")){
+                    waterSound.play()
                     controlArrayWindow.push("window9")
                     newGame.scoreWindow++
                 }
@@ -163,6 +177,18 @@ const keyDown = document.addEventListener("keydown", (e)=>{
 function updateLevel (level){
     if (level > 10){ //limite de velocidade para nível 10 ou mais
         level = 10
+    }
+    if (level === 3 || level === 6){ //Gato pegando bombeiros como bonus e desviando do fogo
+        fireToDraw = "./image/fireDrop-nobg.png" //
+        cuteCat = "./image/fireMan-novoFinal.png" //
+        leftFireMan =  "./image/cat-meow.png" // referencia ele virando para esquerda
+        rightFireMan = "./image/cat-right.png" //referencia ele virando para direita
+        
+    } else {
+        fireToDraw = "./image/fireDrop-nobg.png" //
+        cuteCat = "./image/cat-meow.png" //
+        leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
+        rightFireMan = "./image/fireMan-novo-right.png" //referencia ele virando para direita
     }
     const velocity = 70 - (level*5) //Quanto menor a velocity, maior a velocidade do jogo
     if(newGame.firesFreq % velocity === 1){
@@ -369,7 +395,7 @@ function updateCanvas(){
     
     newGame.cats.forEach((cat, index) => {
         updateCatSpeed(newGame.level, cat)
-        cat.drawCat()
+        cat.drawCat(cuteCat)
         if (collision(cat)){
             newGame.cats.splice(index, 1)
             newGame.ScoreCat++
@@ -380,7 +406,7 @@ function updateCanvas(){
 
     newGame.fires.forEach((fire, index)=>{
         updateFireSpeed(newGame.level, fire)
-        fire.drawFire()
+        fire.drawFire(fireToDraw)
         
         if (collision(fire)){
             newGame.gameOver = true
@@ -393,7 +419,8 @@ function updateCanvas(){
             newGame.score = 0
             newGame.fires = []
             document.getElementById("score").innerHTML = 0
-            document.getElementById("bestScore").innerHTML = maxScore //Mudar no html
+            document.getElementById("nameScore").innerHTML = `${playerName.charAt(0).toUpperCase() + playerName.substring(1)} score: ${maxScore}`
+            //Mudar no html
             // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
             //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
             //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
