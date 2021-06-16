@@ -168,63 +168,7 @@ function updateCanvas(){
         }, 2000);
         if (newGame.firesFreq % 60 === 1){
             const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
-            const randomFireY = -100
-            const randomFireWidth = 20
-            const randomFireHeight = 20
-            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
-            //Lembrar de alterar no Fire o construtor caso queira passar width e height
-            const newFire = new Fire (
-                randomFiresX,
-                randomFireY,
-                randomFireWidth,
-                randomFireHeight
-            )
-            newGame.fires.push(newFire)
-        }
-        if (controlArrayWindow.length === 9){
-            newGame.level++
-            controlArrayWindow = []
-            newGame.windows = []
-        }
-    }
-    else if (newGame.level === 2){
-        document.getElementById("animation2").classList.add("font-effect-fire-animation")
-        document.getElementById("animation2").innerHTML = "Level 2"
-        setTimeout(() => {
-            document.getElementById("animation2").style.display = "none"
-        }, 2000);
-        if (newGame.firesFreq % 60 === 1){
-            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
-            const randomFireY = -100
-            const randomFireWidth = 45
-            const randomFireHeight = 45
-            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
-            //Lembrar de alterar no Fire o construtor caso queira passar width e height
-            const newFire = new Fire (
-                randomFiresX,
-                randomFireY,
-                randomFireWidth,
-                randomFireHeight
-            )
-            newGame.fires.push(newFire)
-        }
-        if (controlArrayWindow.length === 9){
-            newGame.level++
-            controlArrayWindow = []
-            newGame.windows = []
-            
-        }
-    }
-    else if (newGame.level === 3){
-        document.getElementById("animation3").classList.add("font-effect-fire-animation")
-        document.getElementById("animation3").innerHTML = "Level 3"
-        document.getElementById("animation3").style.display = "block"
-        setTimeout(() => {
-            document.getElementById("animation3").style.display = "none"
-        }, 2000);
-        if (newGame.firesFreq % 60 === 1){
-            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
-            const randomFireY = -100
+            const randomFireY = -10
             const randomFireWidth = 30
             const randomFireHeight = 30
             //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
@@ -241,25 +185,82 @@ function updateCanvas(){
             newGame.level++
             controlArrayWindow = []
             newGame.windows = []
+            newGame.fires = []
+        }
+    }
+    else if (newGame.level === 2){
+        document.getElementById("animation2").classList.add("font-effect-fire-animation")
+        document.getElementById("animation2").innerHTML = "Level 2"
+        setTimeout(() => {
+            document.getElementById("animation2").style.display = "none"
+        }, 2000);
+        if (newGame.firesFreq % 60 === 1){
+            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
+            const randomFireY = -100
+            const randomFireWidth = Math.floor(Math.random() * 20 + 30)
+            const randomFireHeight = Math.floor(Math.random() * 20 + 30)
+            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
+            //Lembrar de alterar no Fire o construtor caso queira passar width e height
+            const newFire = new Fire (
+                randomFiresX,
+                randomFireY,
+                randomFireWidth,
+                randomFireHeight
+            )
+            newGame.fires.push(newFire)
+        }
+        if (controlArrayWindow.length === 9){
+            newGame.level++
+            controlArrayWindow = []
+            newGame.windows = []
+            newGame.fires = []
+        }
+    }
+    else if (newGame.level === 3){
+        document.getElementById("animation3").classList.add("font-effect-fire-animation")
+        document.getElementById("animation3").innerHTML = "Level 3" 
+        setTimeout(() => {
+            document.getElementById("animation3").style.display = "none"
+        }, 2000);
+        if (newGame.firesFreq % 60 === 1){
+            const randomFiresX = Math.floor(Math.random() *buildingCanvas.clientWidth)
+            const randomFireY = -100
+            const randomFireWidth = Math.floor(Math.random() * 30 + 40)
+            const randomFireHeight = Math.floor(Math.random() * 30 + 40)
+            //Random do tamanho caso consigamos implementar tudo - fase 2 e 3
+            //Lembrar de alterar no Fire o construtor caso queira passar width e height
+            const newFire = new Fire (
+                randomFiresX,
+                randomFireY,
+                randomFireWidth,
+                randomFireHeight
+            )
+            newGame.fires.push(newFire)
+        }
+        if (controlArrayWindow.length === 9){
+            newGame.level++
+            controlArrayWindow = []
+            newGame.windows = []
+            newGame.fires = []
         }
     }
     if (newGame.level === 4){
         newGame.gameOver = true
-            newGame.firesFreq = 0
-            fireCracking.stop()
-            hitSound.play()
-            alert(`Good Game! Final Score: ${newGame.score}`)
-            // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
-            newGame.score = 0
-            newGame.fires = []
-            document.getElementById("score").innerHTML = 0
-            document.getElementById("bestScore").innerHTML = maxScore
-            // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
-            //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
-            //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
-            // 2 - Mudar a forma como ele verifica ou simplesmente deixar ele sem colocar o "none" que é o que faz apagar o width e contar os pontos a mais
-            cancelAnimationFrame(newGame.animationId)
-            
+        newGame.firesFreq = 0
+        fireCracking.stop()
+        hitSound.play()
+        alert(`Good Game! Final Score: ${newGame.score}`)
+        // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
+        newGame.score = 0
+        newGame.fires = []
+        document.getElementById("score").innerHTML = 0
+        document.getElementById("bestScore").innerHTML = maxScore
+        // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
+        //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
+        //Duas opções: 1 - Mudar a forma de contagem de fogo para tempo
+        // 2 - Mudar a forma como ele verifica ou simplesmente deixar ele sem colocar o "none" que é o que faz apagar o width e contar os pontos a mais
+        cancelAnimationFrame(newGame.animationId)
+        
     }
 
 
