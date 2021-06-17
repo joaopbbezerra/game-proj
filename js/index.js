@@ -18,6 +18,7 @@ let fireCracking
 let hitSound
 let meow
 let waterSound
+let oldLady = "./image/cat-lady.png"
 let fireToDraw = "./image/fireDrop-nobg.png"
 let cuteCat = "./image/cat-meow.png"
 
@@ -178,18 +179,7 @@ function updateLevel (level){
     if (level > 15){ //limite de velocidade para nível 10 ou mais
         level = 16
     }
-    if (level % 3 === 0){ //Gato pegando bombeiros como bonus e desviando do fogo
-        fireToDraw = "./image/fireDrop-nobg.png" //
-        cuteCat = "./image/fireMan-novoFinal.png" //
-        leftFireMan =  "./image/cat-meow.png" // referencia ele virando para esquerda
-        rightFireMan = "./image/cat-right.png" //referencia ele virando para direita
-    } else {
-        fireToDraw = "./image/fireDrop-nobg.png" //
-        cuteCat = "./image/cat-meow.png" //
-        leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
-        rightFireMan = "./image/fireMan-novo-right.png" //referencia ele virando para direita
-        // newGame.fireMan.draw(leftFireMan)
-    }
+    
     const velocity = 70 - (level*5) //Quanto menor a velocity, maior a velocidade do jogo
     if(newGame.firesFreq % velocity === 1){
         const randomFiresX = Math.floor(Math.random() * buildingCanvas.clientWidth)
@@ -213,36 +203,48 @@ function updateLevel (level){
         )
         newGame.cats.push(newCat)
     }
+
+    if (newGame.score % 15 === 1){
+        newGame.score++
+        const randomLadyX = Math.floor(Math.random() * buildingCanvas.clientWidth)
+        const randomLadyY = 0
+        const newLady = new Lady (
+            randomLadyX,
+            randomLadyY
+        )
+        newGame.ladies.push(newLady)
+    }
     
 }
 
-function updateCatSpeed (level, cat){
+function updateObjSpeed (level, obj){
     if (level < 2){
-        cat.y += 2
+        obj.y += 2
     } else if (level < 4){
-        cat.y += 3
+        obj.y += 3
     } else if (level < 6){
-        cat.y += 4
+        obj.y += 4
     } else {
-        cat.y += 4 + (level/2)
+        obj.y += 4 + (level/2)
     }
 }
 
-function updateFireSpeed (level, fire){
-    if (level < 2){
-        fire.y += 2
+
+// function updateFireSpeed (level, fire){
+//     if (level < 2){
+//         fire.y += 2
         
-    } else if (level < 4){
-        fire.y += 3
+//     } else if (level < 4){
+//         fire.y += 3
         
-    } else if (level < 6){
-        fire.y += 4
+//     } else if (level < 6){
+//         fire.y += 4
         
-    } else {
-        fire.y += 4 + (level/4)
+//     } else {
+//         fire.y += 4 + (level/4)
         
-    }
-} 
+//     }
+// } 
 
 
 function updateCanvas(){
@@ -250,6 +252,7 @@ function updateCanvas(){
     newGame.fireMan.draw(movement)
     newGame.firesFreq++
     newGame.catsFreq++
+    newGame.ladyFreq++
     if (newGame.level === 1){
         document.getElementById("animation1").classList.add("font-effect-fire-animation")
         document.getElementById("animation1").innerHTML = `Level 1`
@@ -401,7 +404,7 @@ function updateCanvas(){
     // }
     
     newGame.cats.forEach((cat, index) => {
-        updateCatSpeed(newGame.level, cat)
+        updateObjSpeed(newGame.level, cat)
         cat.drawCat(cuteCat)
         if (collision(cat)){
             newGame.cats.splice(index, 1)
@@ -410,9 +413,29 @@ function updateCanvas(){
         }
     })
 
+    newGame.ladies.forEach((lady, index) => {
+        updateObjSpeed(newGame.level, lady)
+        lady.drawLady(oldLady)
+        if (collision(lady)){
+            newGame.ladies.splice(index, 1)
+            newGame.ladiesScore++
+            fireToDraw = "./image/fireDrop-nobg.png" //
+            cuteCat = "./image/fireMan-novoFinal.png" //
+            leftFireMan =  "./image/cat-meow.png" // referencia ele virando para esquerda
+            rightFireMan = "./image/cat-right.png" //referencia ele virando para direita
+            if (newGame.ladiesScore % 2 === 0){
+                fireToDraw = "./image/fireDrop-nobg.png" //
+                cuteCat = "./image/cat-meow.png" //
+                leftFireMan = "./image/fireMan-novoFinal.png" // referencia ele virando para esquerda
+                rightFireMan = "./image/fireMan-novo-right.png" //referencia ele virando para direita
+                // newGame.fireMan.draw(leftFireMan)
+            }
+        }
+    })
+
 
     newGame.fires.forEach((fire, index)=>{
-        updateFireSpeed(newGame.level, fire)
+        updateObjSpeed(newGame.level, fire)
         fire.drawFire(fireToDraw)
         
         if (collision(fire)){
