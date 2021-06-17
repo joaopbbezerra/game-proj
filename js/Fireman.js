@@ -1,9 +1,9 @@
 class Fireman{
     constructor(){
-        this.x = 490
-        this.y = 570
-        this.width= 90
-        this.height = 110
+        this.x = 410
+        this.y = 497
+        this.width= 75
+        this.height = 90
     }
     draw(movement){
         const image = new Image ()
@@ -17,23 +17,23 @@ class Fireman{
         context.clearRect(this.x, this.y, this.width, this.height)
         switch(key){
             case "ArrowUp":
-                if (this.y > 230){
-                    this.y -= 180; //Pra andar pra cima vai diminuir 25 pixels
+                if (this.y > 200){
+                    this.y -= 157; //Pra andar pra cima vai diminuir 25 pixels
                 }
             break;
             case "ArrowDown":
                 if (this.y < 460){
-                    this.y += 180
+                    this.y += 157
                 }
             break;
             case "ArrowLeft":
-                if (this.x > 60){
-                    this.x -= 50
+                if (this.x > 40){
+                    this.x -= 40
                 }
             break;
             case "ArrowRight":
-                if (this.x < 440){
-                    this.x += 50
+                if (this.x < 380){
+                    this.x += 40
                 }
             break;
             case "KeyF":

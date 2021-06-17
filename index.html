@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,43 +11,46 @@
     <script src="js/Fire.js" defer></script>
     <script src="js/Window.js" defer></script>
     <script src="js/Cat.js" defer></script>
+    <script src="js/Lady.js" defer></script>
     <!-- <script src="js/Sound.js" defer></script> -->
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
     <div class="game-window">
         <div class="title-instructions">
             <div class="title">
-                <img class="title-logo" src="./image/title-logo.png" alt="">
                 <h1>Fireman's Game</h1>
-                <img class="title-logo" src="./image/title-logo.png" alt="">
             </div>
-            <button id="start-game">Start Game</button>
+            <button class="start-game" id="start-game">Start</button>
             <div class="instructions">
                 <h3>Instructions</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim pulvinar eleifend.
-                    Nam ornare urna facilisis, ullamcorper enim ut, ornare sem. Nulla sagittis, purus et maximus
-                    fringilla.
+                <p>The building is on fire! Move the firefighter (arrow keys) and extinguish the flames from the building windows ("f" key). Increase your score by saving the falling cats and try to reach the highest level possible.<span class="warning">WARNING:</span> The fire department was informed there's still an old lady inside, try your best to save her!
                 </p>
             </div>
             <div class="keyboard-imgs">
                 <img class="arrows-img" src="./image/arrowKeys4.png" alt="Arrow keys image">
-                <img class="spacebar-img" src="./image/spacebar2.png" alt="Space bar image">
+                <img class="fkey-img" src="./image/Fkey.png" alt="Space bar image">
             </div>
-            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
-            <div class= "scoresDiv" id="scoresDiv">Best Score: <span id="bestScore">0</span></div>
+            <div class="firetruck-container">
+                <img id="toNone" src="./image/fireTruck2.png" alt="">
+            </div>
         </div>
         <div class="canvas-images">
             <!--<img class="roof-image" src="./image/roofTop_NoBackground.png" alt=""> // Teste imagem telhado fora da canvas-->
             <div id="building">
-                <canvas class="img-start" id="canvas" width="600" height="700"></canvas>
+                <canvas class="img-start" id="canvas" width="500" height="600"></canvas>
             </div>
-            <img class="door-image" id="door-image" src="./image/doorBottomNew.png" alt="">
+            
+            <div id="animation1"></div>
+            <span id ="animation2"></span>
         </div>
-        <div id="animation1"></div>
-        <span id ="animation2"></span>
+        <div class="score">
+            <div class="score-table">
+            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
+            <div class= "scoresDiv" id="nameScore"> <div id="bestScore"></div></div>
+            </div>
+        </div>
     </div>
+    <img class="door-image" id="door-image" src="./image/doorBottom_Firetruck.png" alt="">
 </body>
-
 </html>

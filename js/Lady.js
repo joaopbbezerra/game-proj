@@ -1,13 +1,13 @@
-class Cat {
+class Lady {
     constructor(x, y){
         this.x = x
         this.y = y
-        this.width = 50
-        this.height = 50
+        this.width = 40
+        this.height = 60
     }
-    drawCat(source){
+    drawLady(source){
         const image = new Image ()
-        image.src = source //Imagem do foguinho "./image/cat-meow.png"
+        image.src = source 
         // setInterval(() => {
         //     this.drawFire()
         // }, 90);

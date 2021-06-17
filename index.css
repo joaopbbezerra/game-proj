@@ -1,37 +1,46 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Anton&effect=fire-animation");
-
+@import url(https://fonts.googleapis.com/css?family=VT323);
 html{
     /*font-family: 'Do Hyeon', sans-serif;*/
-    font-family: monospace;
+    font-family: "VT323", monospace;
     font-size: 10px;
 }
-
 #canvas {
     /*border: 2px solid black;*/
 }
-
-#start-game {
-    font-size: 3rem;
-    background-color: #870007;
-    color: #fff;
-    padding: 2rem 4rem;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 1rem;
+.start-game {
+    background: #7c7c7c;
+	border-bottom: 6px inset rgba(0, 0, 0, 0.5);
+	border-left: 6px inset rgba(0, 0, 0, 0.5);
+	border-right: 6px inset rgba(255, 255, 255, 0.5);
+	border-top: 6px inset rgba(255, 255, 255, 0.5);
+	box-sizing: border-box;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 5rem;
+	margin: 1rem;
+	min-width: 200px;
+	padding: 0.5rem;
+	text-transform: uppercase;
+	width: auto;
+	background: #881400;
+    font-family: "VT323", monospace;	
 }
-
+.start-game:hover{
+    background: #A81000;
+}
 #text {
     color: black;
 }
-
 .game-window {
     display: flex;
     justify-content: space-evenly;
 }
-
 .img-start {
-    background-image: url(./image/BeforeGameStart-JustBuilding.png);
+    background-image: url(./image/before-game-start.png);
     background-size: 100% 100%;
 }
 .img-new {
@@ -39,25 +48,48 @@ html{
     /*background-image: url(./image/buildingMainCanvas_NoBackground.png); //Imagem antiga (sem chamas, sem telhado)*/ 
     background-size: 100% 100%;
 }
-
 .door-image {
+
     margin-top: -10px;
-    width: 600px;
+    width: 774px;
     display: none;
+    margin-left: 313px;
+}
+.canvas-images{
 }
 
+.score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60rem;
+}
+.score-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 28rem;
+    width: 15rem;
+    background-color: #881400;
+    border: .5rem solid black
+}
+.scoresDiv{
+    font-size: 2.5rem;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+}
 .title-instructions h1 {
-    font-size: 3.5rem;
+    font-size: 6rem;
     color: #870007;
-    margin-left: 5px;
-    margin-right: 5px;
+    /*margin-left: 5px;
+    margin-right: 5px;*/
+    margin: 1rem 0 0 0;
 }
-
 .title-logo {
     width: 7rem;
     height: 7rem;
 }
-
 .title-instructions {
     display: flex;
     flex-direction: column;
@@ -66,44 +98,53 @@ html{
     width: 42.5rem;
     height: 60rem;
 }
-
 .title {
     display: flex;
     align-items: center;
 }
-
 .instructions h3{
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
+    margin: 1rem 0 0 0;
 }
-
 .instructions p{
     text-align: justify;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
-
 .keyboard-imgs {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
 }
-
-.spacebar-img {
-    width: 10rem;
-    height: 3rem;
+.fkey-img {
+    width: 3.5rem;
+    height: 4rem;
 }
-
 .arrows-img {
     width: 10rem;
 }
-
-.scoresDiv{
-    font-size: 1.5rem;
-    padding: 1rem;
-    font-weight: bold;
-    border: 1px solid black;
+.warning {
+    background-color: #870007;
+    color: white;
+    padding: 0  0 0 .3rem;
 }
+.firetruck-container{
+    width: 100%;
+}
+.firetruck-container img {
+    margin-left: 72%;
+    width: 20rem;
+    animation: slide-right 7s;
+}
+  @keyframes slide-right {
+        from {
+         margin-left: -100%;
+        }
+        to {
+        margin-left: 72%;
+        }
+    }
 /*.roof-image{
     margin-bottom: -5px;
     width: 610px;
@@ -115,12 +156,11 @@ html{
     75%  { opacity:0.8; }
     100% { opacity:1; }
   }
-  
 .font-effect-fire-animation{
     animation: flickerAnimation 2s;
     font-size: 100px;
-    top: 50%;
-    left: 55%;
+    top: 45%;
+    left: 50%;
     position: absolute;
     font-family: "Open Sans", sans-serif;
     color: #f5f5f5;
