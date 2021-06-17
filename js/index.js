@@ -342,7 +342,7 @@ function updateCanvas() {
       } caught ${newGame.scoreCat} cats! And look, you made it to level ${
         newGame.level
       }`;
-      document.getElementById("bestScore").innerHTML = `${localStorage.key(0)} : ${localStorage.getItem(localStorage.key(0))}`
+      document.getElementById("bestScore").innerHTML = `${localStorage.key(0)} best score: ${localStorage.getItem(localStorage.key(0))}`
       cancelAnimationFrame(newGame.animationId);
     }
     if (fire.y > buildingCanvas.clientHeight) {
