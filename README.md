@@ -1,6 +1,6 @@
 # Fireman's Game
 
-Fireman's Game is a project developed during [Ironhack's](https://www.ironhack.com/) Web Development course  (module 1) where the goal was to apply the javascript, html5 (using canvas element) and css concepts learned during that period.
+Fireman's Game is a project developed during [Ironhack's](https://www.ironhack.com/) Web Development course  (module 1) where the goal was to apply the javascript, html5 (canvas element) and css concepts learned during that period.
 
 ### Tech
 - Javascript
