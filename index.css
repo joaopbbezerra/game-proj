@@ -1,70 +1,72 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url("https://fonts.googleapis.com/css?family=Anton&effect=fire-animation");
 @import url(https://fonts.googleapis.com/css?family=VT323);
-html{
+
+html {
     /*font-family: 'Do Hyeon', sans-serif;*/
     font-family: "VT323", monospace;
     font-size: 10px;
 }
-#canvas {
-    /*border: 2px solid black;*/
-}
+
 .start-game {
     background: #7c7c7c;
-	border-bottom: 6px inset rgba(0, 0, 0, 0.5);
-	border-left: 6px inset rgba(0, 0, 0, 0.5);
-	border-right: 6px inset rgba(255, 255, 255, 0.5);
-	border-top: 6px inset rgba(255, 255, 255, 0.5);
-	box-sizing: border-box;
-	color: white;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 5rem;
-	margin: 1rem;
-	min-width: 200px;
-	padding: 0.5rem;
-	text-transform: uppercase;
-	width: auto;
-	background: #881400;
-    font-family: "VT323", monospace;	
+    border-bottom: 6px inset rgba(0, 0, 0, 0.5);
+    border-left: 6px inset rgba(0, 0, 0, 0.5);
+    border-right: 6px inset rgba(255, 255, 255, 0.5);
+    border-top: 6px inset rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 5rem;
+    margin: 1rem;
+    min-width: 200px;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    width: auto;
+    background: #881400;
+    font-family: "VT323", monospace;
 }
-.start-game:hover{
+
+.start-game:hover {
     background: #A81000;
 }
+
 #text {
     color: black;
 }
+
 .game-window {
     display: flex;
     justify-content: space-evenly;
 }
+
 .img-start {
     background-image: url(./image/before-game-start.png);
     background-size: 100% 100%;
 }
+
 .img-new {
     background-image: url(./image/Bulding_WithFlames&Roof.png);
-    /*background-image: url(./image/buildingMainCanvas_NoBackground.png); //Imagem antiga (sem chamas, sem telhado)*/ 
+    /*background-image: url(./image/buildingMainCanvas_NoBackground.png); //Imagem antiga (sem chamas, sem telhado)*/
     background-size: 100% 100%;
 }
+
 .door-image {
 
     margin-top: -10px;
-    width: 774px;
+    width: 500px;
     display: none;
-    margin-left: 313px;
-}
-.canvas-images{
 }
 
-.score{
+.score {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60rem;
 }
-.score-table{
+
+.score-table {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,12 +75,14 @@ html{
     background-color: #881400;
     border: .5rem solid black
 }
-.scoresDiv{
+
+.scoresDiv {
     font-size: 2.5rem;
     padding: 1rem;
     color: white;
     text-align: center;
 }
+
 .title-instructions h1 {
     font-size: 6rem;
     color: #870007;
@@ -86,10 +90,12 @@ html{
     margin-right: 5px;*/
     margin: 1rem 0 0 0;
 }
+
 .title-logo {
     width: 7rem;
     height: 7rem;
 }
+
 .title-instructions {
     display: flex;
     flex-direction: column;
@@ -98,65 +104,101 @@ html{
     width: 42.5rem;
     height: 60rem;
 }
+
+.title-instructions2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 42.5rem;
+    height: 85rem;
+}
+
 .title {
     display: flex;
     align-items: center;
 }
-.instructions h3{
+
+.instructions h3 {
     text-align: center;
     font-size: 3rem;
     margin: 1rem 0 0 0;
 }
-.instructions p{
+
+.instructions p {
     text-align: justify;
     font-size: 2rem;
 }
+
 .keyboard-imgs {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
 }
+
 .fkey-img {
     width: 3.5rem;
     height: 4rem;
 }
+
 .arrows-img {
     width: 10rem;
 }
+
 .warning {
     background-color: #870007;
     color: white;
-    padding: 0  0 0 .3rem;
+    padding: 0 0 0 .3rem;
 }
-.firetruck-container{
+
+.firetruck-container {
     width: 100%;
 }
+
 .firetruck-container img {
     margin-left: 72%;
     width: 20rem;
     animation: slide-right 7s;
 }
-  @keyframes slide-right {
-        from {
-         margin-left: -100%;
-        }
-        to {
-        margin-left: 72%;
-        }
+
+@keyframes slide-right {
+    from {
+        margin-left: -100%;
     }
+
+    to {
+        margin-left: 72%;
+    }
+}
+
 /*.roof-image{
     margin-bottom: -5px;
     width: 610px;
   }*/
-  @keyframes flickerAnimation {
-    0%   { opacity:0; }
-    24%  { opacity:0.3; }
-    50%  { opacity:0.5; }
-    75%  { opacity:0.8; }
-    100% { opacity:1; }
-  }
-.font-effect-fire-animation{
+@keyframes flickerAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    24% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    75% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.font-effect-fire-animation {
     animation: flickerAnimation 2s;
     font-size: 100px;
     top: 45%;
@@ -164,6 +206,6 @@ html{
     position: absolute;
     font-family: "Open Sans", sans-serif;
     color: #f5f5f5;
-    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px         #F90, 0px -20px 40px #C33;
+    text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px #F90, 0px -20px 40px #C33;
     font-size: 100px;
 }

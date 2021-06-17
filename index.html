@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,16 +16,20 @@
     <!-- <script src="js/Sound.js" defer></script> -->
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div class="game-window">
-        <div class="title-instructions">
+        <div id="title-instructions" class="title-instructions">
             <div class="title">
                 <h1>Fireman's Game</h1>
             </div>
             <button class="start-game" id="start-game">Start</button>
             <div class="instructions">
                 <h3>Instructions</h3>
-                <p>The building is on fire! Move the firefighter (arrow keys) and extinguish the flames from the building windows ("f" key). Increase your score by saving the falling cats and try to reach the highest level possible.<span class="warning">WARNING:</span> The fire department was informed there's still an old lady inside, try your best to save her!
+                <p>The building is on fire! Move the firefighter (arrow keys) and extinguish the flames from the
+                    building windows ("f" key). Increase your score by saving the falling cats and try to reach the
+                    highest level possible.<span class="warning">WARNING:</span> The fire department was informed
+                    there's still an old lady inside, try your best to save her!
                 </p>
             </div>
             <div class="keyboard-imgs">
@@ -40,17 +45,20 @@
             <div id="building">
                 <canvas class="img-start" id="canvas" width="500" height="600"></canvas>
             </div>
-            
+            <img class="door-image" id="door-image" src="./image/doorBottomNew.png" alt="">
             <div id="animation1"></div>
-            <span id ="animation2"></span>
+            <span id="animation2"></span>
         </div>
         <div class="score">
             <div class="score-table">
-            <div class= "scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
-            <div class= "scoresDiv" id="nameScore"> <div id="bestScore"></div></div>
+                <div class="scoresDiv" id="scoresDiv">Score: <span id="score">0</span></div>
+                <div class="scoresDiv" id="nameScore">
+                    <div id="bestScore"></div>
+                </div>
             </div>
         </div>
     </div>
-    <img class="door-image" id="door-image" src="./image/doorBottom_Firetruck.png" alt="">
+
 </body>
+
 </html>
