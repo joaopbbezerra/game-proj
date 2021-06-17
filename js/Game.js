@@ -6,7 +6,7 @@ class Game {
         this.cats = []
         this.catsFreq = 0
         this.score = 0
-        this.ScoreCat = 0
+        this.scoreCat = 0
         this.ladyFreq = 0
         this.ladies = []
         this.ladiesScore = 0

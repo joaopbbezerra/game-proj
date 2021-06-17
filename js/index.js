@@ -5,7 +5,9 @@ const context = buildingCanvas.getContext("2d");
 
 document.getElementById("start-game").onclick = () => {
     document.getElementById("canvas").classList.add("img-new");
+    
     startGame();
+    document.getElementById("toNone").style.display = "none"
     document.getElementById("door-image").style.display = "block"; //Carregar imagem da porta depois do Start Game
 };
 let maxScore
@@ -23,11 +25,11 @@ let oldLady = "./image/cat-lady.png"
 let fireToDraw = "./image/fireDrop-nobg.png"
 let cuteCat = "./image/cat-meow.png"
 
-witchSound = new sound ("./image/witch-laugh.mp3")
-waterSound = new sound ("./image/water-effect.mp3")
-meow = new sound ("./image/meow-sound.mp3")
-fireCracking = new sound("./image/fire-1.mp3")
-hitSound = new sound ("./image/fireMan-scream.mp3")
+witchSound = new sound ("./sound/witch-laugh.mp3")
+waterSound = new sound ("./sound/water-effect.mp3")
+meow = new sound ("./sound/meow-sound.mp3")
+fireCracking = new sound("./sound/fire-1.mp3")
+hitSound = new sound ("./sound/fireMan-scream.mp3")
 
 //Depois vou implementar o sound como class, apenas pra deixar o código mais clean
 function sound(src) {
@@ -409,7 +411,8 @@ function updateCanvas(){
         cat.drawCat(cuteCat)
         if (collision(cat)){
             newGame.cats.splice(index, 1)
-            newGame.ScoreCat++
+            newGame.scoreCat++
+            document.getElementById("score").innerHTML = newGame.scoreCat
             meow.play()
         }
     })
@@ -445,13 +448,11 @@ function updateCanvas(){
             newGame.firesFreq = 0
             fireCracking.stop()
             hitSound.play()
-            alert(`Game Over! ${playerName}'s Score: ${newGame.score}
-            You caught ${newGame.ScoreCat} cats! And look, you made it to level ${newGame.level} `)
             // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
             newGame.score = 0
             newGame.fires = []
             document.getElementById("score").innerHTML = 0
-            document.getElementById("nameScore").innerHTML = `${playerName.charAt(0).toUpperCase() + playerName.substring(1)} score: ${maxScore}`
+            document.getElementById("nameScore").innerHTML = `${playerName.charAt(0).toUpperCase() + playerName.substring(1)} caught ${newGame.scoreCat} cats! And look, you made it to level ${newGame.level}`
             //Mudar no html
             // document.getElementById("canvas").style.display = "none" //Comentado pq tava bugando o score. 
             //O score tava deletando o fogo que ainda tinha na imagem e somando no score.
@@ -462,7 +463,6 @@ function updateCanvas(){
         }
         if (fire.y > buildingCanvas.clientHeight){
             newGame.score++
-            document.getElementById("score").innerHTML = newGame.score
             newGame.fires.splice(index, 1)
         }
     })
