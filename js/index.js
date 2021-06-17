@@ -25,6 +25,7 @@ let witchSound;
 let oldLady = "./image/cat-lady.png";
 let fireToDraw = "./image/fireDrop-nobg.png";
 let cuteCat = "./image/cat-meow.png";
+let newBestArray = []
 
 witchSound = new sound("./sound/witch-laugh.mp3");
 waterSound = new sound("./sound/water-effect.mp3");
@@ -320,6 +321,19 @@ function updateCanvas() {
       fireCracking.stop();
       hitSound.play();
       // console.log(`New Game Score:${newGame.score} NewBestScore: ${newBestScore}`) Apenas para testar
+      if (playerName){
+        localStorage.setItem(playerName, newGame.level)
+        console.log(localStorage)
+        if (localStorage.length > 1){
+            for (let i=0; i<localStorage.length; i++){
+                if (localStorage.getItem(localStorage.key(0)) > localStorage.getItem(localStorage.key(1))){
+                    localStorage.removeItem(localStorage.key(1))
+                } else{
+                    localStorage.removeItem(localStorage.key(0))
+                }
+            }
+        }
+      }
       newGame.score = 0;
       newGame.fires = [];
       document.getElementById("score").innerHTML = 0;
@@ -328,6 +342,7 @@ function updateCanvas() {
       } caught ${newGame.scoreCat} cats! And look, you made it to level ${
         newGame.level
       }`;
+      document.getElementById("bestScore").innerHTML = `${localStorage.key(0)} : ${localStorage.getItem(localStorage.key(0))}`
       cancelAnimationFrame(newGame.animationId);
     }
     if (fire.y > buildingCanvas.clientHeight) {

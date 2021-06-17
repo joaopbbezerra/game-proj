@@ -18,5 +18,6 @@ class Game {
     this.animationId = null;
     this.gameOver = false;
     this.level = 1;
+    this.previousLevel = 0;
   }
 }
