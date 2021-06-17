@@ -18,11 +18,12 @@ let fireCracking
 let hitSound
 let meow
 let waterSound
+let witchSound
 let oldLady = "./image/cat-lady.png"
 let fireToDraw = "./image/fireDrop-nobg.png"
 let cuteCat = "./image/cat-meow.png"
 
-
+witchSound = new sound ("./image/witch-laugh.mp3")
 waterSound = new sound ("./image/water-effect.mp3")
 meow = new sound ("./image/meow-sound.mp3")
 fireCracking = new sound("./image/fire-1.mp3")
@@ -417,6 +418,7 @@ function updateCanvas(){
         updateObjSpeed(newGame.level, lady)
         lady.drawLady(oldLady)
         if (collision(lady)){
+            witchSound.play()
             newGame.ladies.splice(index, 1)
             newGame.ladiesScore++
             fireToDraw = "./image/fireDrop-nobg.png" //
